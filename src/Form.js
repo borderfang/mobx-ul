@@ -12,8 +12,11 @@ export default class Form extends Component {
 		const uname = this.refs.uname.value;
 		const myclass = this.refs.myclass.value;
 		const myaddress = this.refs.myaddress.value;
+		if(uname == "" || myclass == "" || myaddress == "") {
+			alert("请填写信息");
+			return;
+		}
 		studentLists.addStudent({name: uname, myclass: myclass, address: myaddress});
-		
 		$.ajax({
 		   type: "GET",
 		   url: "/addStudent",

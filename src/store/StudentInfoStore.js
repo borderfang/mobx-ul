@@ -9,10 +9,8 @@ class StudentInfoStore {
 	}
 
 	addStudent(studentOne) {
-		if (!studentOne.name || !studentOne.myclass || !studentOne.adddress) {
-			return 
-		}
 		this.student.push(studentOne);
+		console.log(this.student);
 	}
 
 }
@@ -24,7 +22,7 @@ autorun(() => {
 		   type: "GET",
 		   url: "/allstudent",
 		   success: function(msg){
-		   		console.log(msg);
+		   		// console.log(msg);
 		   		studentLists.student = msg;
 		   }
 		});

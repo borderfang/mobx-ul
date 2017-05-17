@@ -4711,10 +4711,8 @@ var StudentInfoStore = (_class = function () {
 	_createClass(StudentInfoStore, [{
 		key: "addStudent",
 		value: function addStudent(studentOne) {
-			if (!studentOne.name || !studentOne.myclass || !studentOne.adddress) {
-				return;
-			}
 			this.student.push(studentOne);
+			console.log(this.student);
 		}
 	}, {
 		key: "studentCount",
@@ -4740,7 +4738,7 @@ exports.default = studentLists;
 		type: "GET",
 		url: "/allstudent",
 		success: function success(msg) {
-			console.log(msg);
+			// console.log(msg);
 			studentLists.student = msg;
 		}
 	});
@@ -13791,8 +13789,11 @@ var Form = (0, _mobxReact.observer)(_class = function (_Component) {
 			var uname = this.refs.uname.value;
 			var myclass = this.refs.myclass.value;
 			var myaddress = this.refs.myaddress.value;
+			if (uname == "" || myclass == "" || myaddress == "") {
+				alert("请填写信息");
+				return;
+			}
 			_StudentInfoStore2.default.addStudent({ name: uname, myclass: myclass, address: myaddress });
-
 			$.ajax({
 				type: "GET",
 				url: "/addStudent",
